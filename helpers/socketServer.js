@@ -18,6 +18,7 @@ const socketServer = server => {
 				} else if (room.opponent === socket.id) {
 					room.opponent = null;
 				}
+				socket.to(roomId).emit('opponentLeave', { status: true });
 				socket.leave(roomId);
 				await room.save();
 			}
