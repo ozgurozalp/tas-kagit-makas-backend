@@ -63,7 +63,7 @@ roomRoute.delete('/delete/:id', async (req, res) => {
     const { id } = req.params;
     const room = await Room.deleteOne({ roomCode: id });
     return res.json({
-        status: room?.deletedCount !== 0,
+        status: room !== null ? room.deletedCount !== 0 : 0,
     });
 });
 
